@@ -6,7 +6,7 @@
 ### méthode defense : defense*2 puis force+5 au prochain tour
 
 
-class Personnages:
+class Personnage:
 	def __init__(self,pv,force,defense):
 		self._pv = pv
 		self._force = force
