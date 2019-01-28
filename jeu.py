@@ -1,5 +1,7 @@
 #from objets.hero import *
 from objets.personnage import *
+from objets.hero import *
+import random
 
 def creationPersonnage():
 	#nettoye()
@@ -27,29 +29,56 @@ def creationPersonnage():
 			print("Pas encore developpé")
 		elif classe == "0":
 			nom=input("Le nom de votre personnage : ")
-			hero=Personnage(nom,100,10,5)
+			hero=Hero(nom,100,10,5)
 			fin=1
 		else:
 			print("Ceci n est pas possible !\n")
 	return hero
 
+def lancede(nombre_de_face):
+	return random.randint(1,nombre_de_face)
 
-def menu():
+def QuiCommence(hero,adversaire): # retourne le personnage qui commencera chaque tour du combat
+	resultat=None
+	initiative_adv=lancede(15)
+	initiative_hero=lancede(20)
+	print(hero.get_nom(), " Lance un dés 20, resultat : ",initiative_hero)
+	print(adversaire.get_nom(), " Lance un dés 15, resultat : ",initiative_adv)
+	while resultat == None:
+		if initiative_adv > initiative_hero:
+			print("votre adversaire tapera en premier durant tout le combat")
+			resultat="adversaire"
+		elif initiative_hero > initiative_adv:
+			print("vous tapez en premier durant tout le combat")
+			resultat="hero"
+		else:
+			initiative_adv=lancede(15)
+			initiative_hero=lancede(20)
+	return resultat
+
+
+#def combat(attaquant, attaquer):
+	#while attaquer._pv > attaquant._pv:
+
+		
+		
+
+def Run():
 	print("Bienvenu dans notre jeu !")
 	fin=0
 	hero=None
 	while fin == 0:
-		print("debut de while")
 		if hero == None:
 			print("Création du personnage !")
 			hero=creationPersonnage()
 			fin=1
-			#print("PV :",hero._pv)
-			#hero.affiche()
-		#else:
-		#	print("PV :",hero._pv)
-		#	print("FORCE :",hero._force)
-		#	print("DEFENCE",hero._defense)
-	print("PV :",hero._pv)
+	adversaire=Personnage("Murloc",60,6,3)
+	ordre=QuiCommence(hero,adversaire)
+	hero.Presentation()
+	print("degats de larme",hero._arme._degat)
+	#if ordre == "hero"
+	#	combat(hero,adversaire)
+	#else
+	#	combat(adversaire,hero)
 
-menu()
+Run()
