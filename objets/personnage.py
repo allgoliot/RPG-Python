@@ -17,12 +17,12 @@ class Personnage:
 		#return self._force
 
 	#Récuperer les pv
-	#def _get_pv(self):
-	#	return self._pv
+	def _get_pv(self):
+		return self._pv
 
 	#Attribuer une nouvelle valeur à pv
-	#def _set_pv(self,point_de_vie):
-	#	self._pv = point_de_vie
+	def _set_pv(self,point_de_vie):
+		self._pv = point_de_vie
 
 	#Rendre pv  que par get et set
 	#_pv = property(_get_pv,_set_pv)
@@ -84,7 +84,8 @@ class Hero(Personnage):
 
 	def Presentation(self):
 		Personnage.Presentation(self)
-		print("Degat arme",self._arme._degat)
+		print("Arme équipée : ",self._arme._nom_arme)
+		print("Dégat arme : ",self._arme._degat)
 		
 	def choix(self,bot=1):
 		choix=None
