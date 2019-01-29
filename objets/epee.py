@@ -1,5 +1,5 @@
 import random
-class Epee():
+class epee():
 	"""docstring for Epee_longue"""
 	def __init__(self):
 		self._nom_arme="Epee longue"

@@ -1,6 +1,5 @@
 #from objets.hero import *
 from objets.personnage import *
-from objets.hero import *
 import random
 
 def creationPersonnage():
